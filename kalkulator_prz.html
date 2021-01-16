@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+
+  <title>Kalkulatory Rowerowe</title>
+  <meta name="Kalkulatory_rowerowe" content="">
+  <meta name="Mateusz_Sojka" content="rowery">
+<link href='http://fonts.googleapis.com/css?family=Alata&subset=latin,latin-ext' rel='stylesheet'>
+	<script>
+	function kalk_prz()
+	{
+	var dk = parseInt(document.kalk.bk.value); // Deklaracja dużej kasety ze zmianą na int
+	var mk = parseInt(document.kalk.sk.value); // Deklaracja małej kasety ze zmianą na int
+	var dm = parseInt(document.kalk.bm.value); // Deklaracja dużej tarczy mech. ze zmianą na int
+	var mm = parseInt(document.kalk.sm.value); // Deklaracja małej tarczy mech. ze zmianą na int
+	
+	if (isNaN(dk) || isNaN(mk) || isNaN(dm) || isNaN(mm))
+	{
+	alert("Nie wszystkie wartości są liczbami. Wprowadź ponownie");
+	}
+	else
+	{
+	var pojemnosc = (dk-mk)+(dm-mm)
+	document.kalk.poj.value = pojemnosc;
+	}
+	}
+	
+	function kask()
+	{
+	var obw = parseFloat(document.kalk.og.value);
+	var ob = document.kalk.roz_kask.value;
+	if (isNaN(obw))
+	{
+	alert("Wprowadzana wartość nie jest liczbą");
+	}
+	else
+	{
+	var rozmiar;
+	
+	if ((obw < 50) && (obw>=40))
+	{
+	var rozmiar = "XS";
+	}
+	if ((obw >= 50) && (obw<53.999))
+	{
+	var rozmiar = "S";
+	}
+	if ((obw >= 54) && (obw<57.999))
+	{
+	var rozmiar = "M";
+	}
+	if ((obw >= 58) && (obw<60.999))
+	{
+	var rozmiar = "L";
+	}
+	if ((obw >= 61) && (obw<=70))
+	{
+	var rozmiar = "XL";
+	}
+	
+	}
+	document.kalk.roz_kask.value = rozmiar;
+	}
+	
+	</script>
+
+
+	<style>
+	body
+	{
+	background-color: #358edb;
+	font-family: 'Alata', sans-serif;
+	}
+	.nag
+	{
+	background-color:  #196ab0;
+	border: 2px solid #169e38;
+	border-radius: 50px 20px;
+	width: 40%;
+	margin: 0 auto;
+	}
+	h1{
+	color: white;
+	}
+	h2
+	{
+	color:white;
+	}
+	.prz
+	{
+	background-color: #196ab0;; 
+	border: 2px solid #169e38;
+	
+	width: 60%;
+	margin: 0 auto;
+	color:white;
+	font-weight: bold;
+	}
+	input
+	{
+	border: 2px solid black;
+	border-radius: 20px;
+	height: 20px;
+	}
+	
+	
+	</style>
+</head>
+
+<body>
+  <div class="nag">
+  <center><h2>Kalkulatory rowerowe</h2><h2>Mateusz Sójka</h2>
+  <br></center>
+
+	</div>
+	
+	<form name="kalk" action="" method="post">
+	<fieldset class="prz">
+	<legend><center>Kalkulator przerzutki rowerowej</center></legend>
+	<center>ILOŚĆ ZĄBKÓW NA NAJWIĘKSZEJ ZĘBATCE KASETY <br><input type="text" name="bk"><br>
+	ILOŚĆ ZĄBKÓW NA NAJMNIEJSZEJ ZĘBATCE KASETY <br><input type="text" name="sk"><br>
+	<p>W przypadku mechanizmu korbowego z jedną tarczą wpisz poniżej 0</p><br>
+	ILOŚĆ ZĄBKÓW NA NAJWIĘKSZEJ ZĘBATCE MECHANIZMU  <br><input type="text" name="bm"><br>
+	ILOŚĆ ZĄBKÓW NA NAJMNIEJSZEJ ZĘBATCE MECHANIZMU  <br><input type="text" name="sm"><br>
+	<input type="button" value="Policz" onclick="kalk_prz()"><br>
+	WYMAGANA POJEMNOŚĆ PRZERZUTKI <br><input type="text" name="poj" disabled><br>
+	</center>
+	</fieldset>
+	
+	<fieldset class="prz">
+	<legend>Kalkulator rozmiaru kasku</legend>
+	<center>
+	OBWÓD GŁOWY (cm): <br><input type="text" name="og"><br>
+	<input type="button" value="Policz" onclick="kask()"><br>
+	SUGEROWANY ROZMIAR KASKU: <br><input type="text" name="roz_kask" disabled><br>
+	</center>
+	</fieldset>
+	</form>
+</body>
+</html>
